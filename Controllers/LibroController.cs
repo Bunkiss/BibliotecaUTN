@@ -1,28 +1,32 @@
 ﻿using BibliotecaUTN.Datos;
-using Microsoft.AspNetCore.Mvc;
 using BibliotecaUTN.Models;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BibliotecaUTN.Controllers
 {
-    public class EditorialController : Controller
+    public class LibroController : Controller
     {
         public BibliotecaDatos _DB = new BibliotecaDatos();
 
         //GET - LIST
         public IActionResult Index()
         {
-            return View(_DB.ListEditorial(0));
+            return View(_DB.ListLibro(0));
         }
 
         //GET - CREATE
         public IActionResult Create()
         {
+            ViewBag.Editorial = _DB.ListEditorial(0);
+            ViewBag.Autor = _DB.ListAutores(0);
+            ViewBag.Genero = _DB.ListGenero(0);
+            ViewBag.Ubicacion = _DB.ListUbicacion(0);
             return View();
         }
+
         //POST - CREATE
         [HttpPost]
-        public IActionResult Create(Editorial editorial)
+        public IActionResult Create(Libro libro)
         {
             try
             {
@@ -30,7 +34,7 @@ namespace BibliotecaUTN.Controllers
                 {
                     return View();
                 }
-                ViewBag.Error = _DB.CreateEditorial(editorial);
+                ViewBag.Error = _DB.CreateLibro(libro);
                 if (ViewBag.Error != "")
                 {
                     return View();
@@ -50,18 +54,22 @@ namespace BibliotecaUTN.Controllers
         //GET - DETAILS
         public IActionResult Details(int id) 
         {
-            return View(_DB.ListEditorial(id).FirstOrDefault());
+            return View(_DB.ListLibro(id).FirstOrDefault());
         }
 
         //GET - EDIT
         public IActionResult Edit(int id)
         {
-            return View(_DB.ListEditorial(id).FirstOrDefault());
+            ViewBag.Editorial = _DB.ListEditorial(0);
+            ViewBag.Autor = _DB.ListAutores(0);
+            ViewBag.Genero = _DB.ListGenero(0);
+            ViewBag.Ubicacion = _DB.ListUbicacion(0);
+            return View(_DB.ListLibro(id).FirstOrDefault());
         }
 
         // POST - EDIT
         [HttpPost]
-        public IActionResult Edit(Editorial editorial)
+        public IActionResult Edit(Libro libro)
         {
             try
             {
@@ -69,7 +77,7 @@ namespace BibliotecaUTN.Controllers
                 {
                     return BadRequest();
                 }
-                ViewBag.Error = _DB.EditEditorial(editorial);
+                ViewBag.Error = _DB.EditLibro(libro);
                 if (ViewBag.Error != "")
                 {
                     return View();
@@ -83,23 +91,24 @@ namespace BibliotecaUTN.Controllers
             {
                 return View();
             }
+
         }
 
         // GET - DELETE
         public IActionResult Delete(int id)
         {
-            return View(_DB.ListEditorial(id).FirstOrDefault());
+            return View(_DB.ListLibro(id).FirstOrDefault());
         }
 
         // POST - DELETE
-        [HttpPost, ActionName("Delete")] 
+        [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
             try
             {
-                if (_DB.ListEditorial(id).Any())
+                if (_DB.ListLibro(id).Any())
                 {
-                    ViewBag.Error = _DB.DeleteEditorial(id);
+                    ViewBag.Error = _DB.DeleteLibro(id);
                     if (ViewBag.Error != "")
                     {
                         return View();

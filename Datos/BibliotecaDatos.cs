@@ -1,5 +1,6 @@
 ﻿using BibliotecaUTN.Models;
 using System.Data.SqlClient;
+using System.Runtime.Intrinsics.X86;
 
 
 namespace BibliotecaUTN.Datos
@@ -206,6 +207,87 @@ namespace BibliotecaUTN.Datos
         public string DeleteUbicacion(int id)
         {
             string query = $"DELETE FROM Ubicacion WHERE id_ubicacion = {id}";
+            return EjecutarQueryCED(query);
+        }
+
+        //------------------------------------------------------- LIBRO -------------------------------------------------------
+        public List<Libro> ListLibro(int id)
+        {
+            List<Libro> lista = new List<Libro>();
+            using (SqlConnection con = new SqlConnection(connectionString)) //Se requieren los tags (as) para cada uno. No agregar saltos de linea
+            {
+                string query = "SELECT l.id_Libro AS id, l.Titulo AS titulo, l.CantidadCopias AS copias, " +
+                            $"e.id_editorial AS idEditorial, e.Nombre AS nombreEditorial, " +
+                            $"a.id_autor AS idAutor, a.Nombre AS nombreAutor, a.Nacionalidad AS nacionalidadAutor, " +
+                            $"g.id_genero AS idGenero, g.Nombre AS nombreGenero, g.Descripcion AS descripcionGenero, " +
+                            $"u.id_ubicacion AS idUbicacion, u.Nombre AS nombreUbicacion " +
+                            $"FROM Libro l " +
+                            $"JOIN Editorial e ON l.id_editorial = e.id_editorial " +
+                            $"JOIN Autor a ON l.id_autor = a.id_autor " +
+                            $"JOIN Genero g ON l.id_genero = g.id_genero " +
+                            $"JOIN Ubicacion u ON l.id_ubicacion = u.id_ubicacion ";
+                if (id > 0)
+                {
+                    query += $"WHERE id_Libro = {id}";
+                }
+
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    lista.Add(new Libro()
+                    {
+                        Id = (int)reader["id"],
+                        Nombre = reader["titulo"].ToString(),
+                        CantidadCopias = (int)reader["copias"],
+                        id_autor = (int)reader["idAutor"],
+                        Autor = new Autor()
+                        {
+                            Id = (int)reader["idAutor"],
+                            Nombre = reader["nombreAutor"].ToString(),
+                            Nacionalidad = reader["nacionalidadAutor"].ToString()
+                        },
+                        id_editorial = (int)reader["idEditorial"],
+                        Editorial = new Editorial()
+                        {
+                            Id = (int)reader["idEditorial"],
+                            Nombre = reader["nombreEditorial"].ToString()
+                        },
+                        id_genero = (int)reader["idGenero"],
+                        Genero = new Genero()
+                        {
+                            Id = (int)reader["idGenero"],
+                            Nombre = reader["nombreGenero"].ToString(),
+                            Descripcion = reader["descripcionGenero"].ToString()
+                        },
+                        id_ubicacion = (int)reader["idUbicacion"],
+                        Ubicacion = new Ubicacion()
+                        {
+                            Id = (int)reader["idUbicacion"],
+                            Nombre = reader["nombreUbicacion"].ToString()
+                        }
+                    });
+                }
+            }
+            return lista;
+        }
+        public string CreateLibro(Libro libro)
+        {
+            string query = $"INSERT INTO Libro (Titulo, CantidadCopias, id_editorial, id_autor, id_genero, id_ubicacion) " +
+                $"VALUES ('{libro.Nombre}', {libro.CantidadCopias}, {libro.id_editorial}, {libro.id_autor}, {libro.id_genero}, {libro.id_ubicacion})";
+            return EjecutarQueryCED(query);
+        }
+        public string EditLibro(Libro libro)
+        {
+            string query = $"UPDATE Libro SET Titulo = '{libro.Nombre}', CantidadCopias = {libro.CantidadCopias}, id_editorial = {libro.id_editorial}, " +
+                $"id_autor = {libro.id_autor}, id_genero = {libro.id_genero}, id_ubicacion = {libro.id_ubicacion} WHERE id_Libro = {libro.Id}";
+            return EjecutarQueryCED(query);
+        }
+        public string DeleteLibro(int id)
+        {
+            string query = $"DELETE FROM Libro WHERE id_Libro = {id}";
             return EjecutarQueryCED(query);
         }
     }

@@ -1,0 +1,80 @@
+﻿@model IEnumerable<BibliotecaUTN.Models.Libro>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de Libros</h1>
+
+<p>
+    Agregar <a asp-action="Create">nuevo Libro</a>
+</p>
+@if (Model.Count() > 0)       //AGREGAMOS UN IF PARA SABER SI HAY O NO MASCOTAS Y MOSTRAR UN MSG  SI NO
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CantidadCopias)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Editorial)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Autor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Genero)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ubicacion)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CantidadCopias)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Editorial.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Autor.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genero.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ubicacion.Nombre)
+                </td>
+                <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+    <p>Hay @Model.Count() libros registrados</p> //CONTAMOS EL MODELO (LA LISTA)
+    
+}
+else
+{
+    <div class="alert alert-info">Aún no hay libros registradas</div>
+}
