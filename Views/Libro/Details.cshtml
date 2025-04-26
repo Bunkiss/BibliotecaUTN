@@ -4,9 +4,9 @@
     ViewData["Title"] = "Details";
 }
 
-<div id="details-delete">
-    <div id="details-delete-contenedor">
-        <h2 id="details-delete-titulo">@Html.DisplayFor(model => model.Nombre)</h2>
+<div id="controllers">
+    <div id="controllers-contenedor">
+        <h2 id="controllers-titulo">@Html.DisplayFor(model => model.Nombre)</h2>
 
         <dl id="details-delete-contenido" class="row">
             <dt class = "col-sm-2">
@@ -46,7 +46,7 @@
                 @Html.DisplayFor(model => model.Id)
             </dd>
         </dl>
-        <div id="details-btns">
+        <div id="controllers-btns">
             <a href="@Url.Action("Index", "Libro")">Volver</a>
             <a href="@Url.Action("Edit", "Libro", new { id = Model.Id })">Editar</a>
             <a href="@Url.Action("Delete", "Libro", new { id = Model.Id })">Eliminar</a>
