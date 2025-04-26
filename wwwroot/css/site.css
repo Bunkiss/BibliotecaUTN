@@ -66,7 +66,7 @@ body {
     background-color: var(--ocaso-oscuro-color);
 }
 
-/*---------------------------- CREATE/DETAILS/DELETE/EDIT ----------------------------*/
+/*---------------------------- GENERAL CONTROLLERS ----------------------------*/
 
 #controllers {
     display: flex;
@@ -96,7 +96,7 @@ body {
 #controllers-btns {
     display: flex;
     gap: 15px;
-    margin-top: 30px;
+    margin-top: 5px;
 }
     #controllers-btns input[type="submit"],
     #controllers-btns a {
@@ -133,6 +133,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-bottom: 20px;
 }
     #details-delete-contenido dt {
         font-weight: bold;
@@ -148,6 +149,7 @@ body {
 /*---------------------------- CREATE/EDIT ----------------------------*/
 
 #create-edit-contenido {
+    margin-bottom: 20px;
 }
     #create-edit-contenido label {
         font-weight: bold;
@@ -164,5 +166,36 @@ body {
             box-shadow: 0 0 5px var(--ocaso-medio-color);
         }
 
+/*---------------------------- INDEX(LIST) ----------------------------*/
 
+#lista-contenedor {
+    background-color: var(--ocaso-claro-color);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 1500px;
+}
+
+#lista-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--ocaso-claro-1-color);
+    color: var(--oscuro-text-color);
+    border-radius: 10px;
+    overflow: hidden;
+    color: var(--oscuro-text-color);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-top: 10px;
+}
+    #lista-tabla th, #lista-tabla td {
+        padding: 12px 15px;
+        text-align: left;
+    }
+    #lista-tabla thead {
+        background-color: var(--ocaso-medio-color);
+    }
+    #lista-tabla th {
+        font-weight: bold;
+    }
 

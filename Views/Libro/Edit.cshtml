@@ -72,7 +72,7 @@
             </div>
 
             <div id="controllers-btns">
-                <a asp-action="Details">Volver</a>
+                <a href="@Url.Action("Details", "Libro", new { id = Model.Id })">Volver</a>
                 <input type="submit" value="Editar" class="btn btn-primary" />
             </div>
         </form>
