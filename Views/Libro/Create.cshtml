@@ -23,7 +23,7 @@
                 <span asp-validation-for="CantidadCopias" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="id_editorial" class="control-label"></label>
+                <label asp-for="Editorial" class="control-label"></label>
                 <select asp-for="id_editorial" class="form-control">
                     @*Podríamos poner los id en value y darle el nombre manualmente, pero de este otro modo es dinámico*@
                     @{
@@ -36,7 +36,7 @@
                 <span asp-validation-for="id_editorial" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="id_autor" class="control-label"></label>
+                <label asp-for="Autor" class="control-label"></label>
                 <select asp-for="id_autor" class="form-control">
                     @{
                         foreach (var item in ViewBag.Autor)
@@ -48,7 +48,7 @@
                 <span asp-validation-for="id_autor" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="id_genero" class="control-label"></label>
+                <label asp-for="Genero" class="control-label"></label>
                 <select asp-for="id_genero" class="form-control">
                     @{
                         foreach (var item in ViewBag.Genero)
@@ -60,7 +60,7 @@
                 <span asp-validation-for="id_genero" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="id_ubicacion" class="control-label"></label>
+                <label asp-for="Ubicacion" class="control-label"></label>
                 <select asp-for="id_ubicacion" class="form-control">
                     @{
                         foreach (var item in ViewBag.Ubicacion)

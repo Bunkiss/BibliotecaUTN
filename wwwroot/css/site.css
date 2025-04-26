@@ -17,6 +17,55 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+/* https://paletasdecolores.com/paleta-de-colores-4390/ - paleta de colores*/
+
+:root {
+    --ocaso-oscuro-color: #5B1C02;
+    --ocaso-medio-color: #D25B01;
+    --ocaso-claro-color: #EAA724;
+    --oscuro-text-color: #220C02;
 }
+
+/*---------------------------- GENERAL ----------------------------*/
+
+body {
+    margin-bottom: 60px;
+    background-color: var(--ocaso-medio-color);
+}
+
+#Menu, #Menu .navbar-brand {
+    background-color: var(--ocaso-oscuro-color);
+    font-weight: 900;
+    color: var(--ocaso-claro-color);
+}
+
+#MenuBtns {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 5px;
+}
+    #MenuBtns li {
+        display: inline-block;
+        padding: 1px 10px;
+        background-color: var(--ocaso-claro-color);
+        color: var(--oscuro-text-color) !important;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+        #MenuBtns li:hover {
+            background-color: var(--ocaso-medio-color);
+        }
+
+#Pie {
+    background-color: var(--ocaso-oscuro-color);
+}
+
+#Contenedor {
+    background-color: var(--ocaso-claro-color);
+}
+
+/*---------------------------- DETAILS ----------------------------*/
