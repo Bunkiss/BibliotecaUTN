@@ -23,10 +23,11 @@ html {
     --ocaso-oscuro-color: #5B1C02;
     --ocaso-medio-color: #D25B01;
     --ocaso-claro-color: #EAA724;
+    --ocaso-claro-1-color: #f0b441;
     --oscuro-text-color: #220C02;
 }
 
-/*---------------------------- GENERAL ----------------------------*/
+/*---------------------------- Shared/_Layout ----------------------------*/
 
 body {
     margin-bottom: 60px;
@@ -43,11 +44,12 @@ body {
     list-style: none;
     padding: 0;
     display: flex;
-    gap: 5px;
+    gap: 15px;
+    padding-left: 25px;
 }
     #MenuBtns li {
         display: inline-block;
-        padding: 1px 10px;
+        padding: 0px 10px;
         background-color: var(--ocaso-claro-color);
         color: var(--oscuro-text-color) !important;
         text-decoration: none;
@@ -64,8 +66,103 @@ body {
     background-color: var(--ocaso-oscuro-color);
 }
 
-#Contenedor {
-    background-color: var(--ocaso-claro-color);
+/*---------------------------- DETAILS - DELETE ----------------------------*/
+
+#details-delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
+    color: var(--ocaso-oscuro-color);
 }
 
-/*---------------------------- DETAILS ----------------------------*/
+#details-delete-contenedor {
+    background-color: var(--ocaso-claro-color);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+#details-delete-titulo {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+#details-delete-contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+    #details-delete-contenido dt {
+        font-weight: bold;
+        white-space: nowrap
+    }
+
+    #details-delete-contenido dd {
+        margin: 0;
+        background-color: var(--ocaso-claro-1-color);
+        border-radius: 8px;
+    }
+
+#details-btns {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+    #details-btns a {
+        display: inline-block;
+        padding: 8px 16px;
+        font-size: 1rem;
+        background-color: var(--ocaso-medio-color);
+        color: var(--oscuro-text-color) !important;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        min-width: 90px;
+        text-align: center;
+    }
+        #details-btns a:hover {
+            background-color: var(--ocaso-claro-color);
+        }
+
+#delete-btns {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+    #delete-btns input[type="submit"],
+    #delete-btns a {
+        display: inline-block;
+        padding: 8px 16px;
+        font-size: 1rem;
+        background-color: var(--ocaso-medio-color);
+        color: var(--oscuro-text-color) !important;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        min-width: 90px;
+        text-align: center;
+        border: none;
+        cursor: pointer;
+    }
+        #delete-btns a:hover {
+            background-color: var(--ocaso-claro-color);
+        }
+    #delete-btns input[type="submit"] {
+        background-color: #b50e0e;
+        color: var(--ocaso-claro-1-color) !important;
+    }
+        #delete-btns input[type="submit"]:hover {
+            background-color: #d60000;
+        }
+
+

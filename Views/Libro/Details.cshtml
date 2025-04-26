@@ -4,57 +4,52 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Detalles</h1>
+<div id="details-delete">
+    <div id="details-delete-contenedor">
+        <h2 id="details-delete-titulo">@Html.DisplayFor(model => model.Nombre)</h2>
 
-<div>
-    <h4>Libro</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CantidadCopias)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CantidadCopias)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Editorial)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Editorial.Nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Autor)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Autor.Nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Genero)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Genero.Nombre)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Ubicacion)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Ubicacion.Nombre)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Volver a la lista</a>
+        <dl id="details-delete-contenido" class="row">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Autor)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Autor.Nombre)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Genero)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Genero.Nombre)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Editorial)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Editorial.Nombre)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.CantidadCopias)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.CantidadCopias)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Ubicacion)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Ubicacion.Nombre)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Id)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+        </dl>
+        <div id="details-btns">
+            <a href="@Url.Action("Index", "Libro")">Volver</a>
+            <a href="@Url.Action("Edit", "Libro", new { id = Model.Id })">Editar</a>
+            <a href="@Url.Action("Delete", "Libro", new { id = Model.Id })">Eliminar</a>
+        </div>
+    </div>
 </div>
