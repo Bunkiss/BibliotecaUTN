@@ -17,8 +17,6 @@ html {
   min-height: 100%;
 }
 
-/* https://paletasdecolores.com/paleta-de-colores-4390/ - paleta de colores*/
-
 :root {
     --ocaso-oscuro-color: #5B1C02;
     --ocaso-medio-color: #D25B01;
@@ -30,11 +28,19 @@ html {
 /*---------------------------- Shared/_Layout ----------------------------*/
 
 body {
-    margin-bottom: 60px;
+    margin: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
+    height: 100vh;
     background-color: var(--ocaso-medio-color);
 }
 
 #Menu, #Menu .navbar-brand {
+    grid-area: header;
     background-color: var(--ocaso-oscuro-color);
     font-weight: 900;
     color: var(--ocaso-claro-color);
@@ -62,8 +68,15 @@ body {
             background-color: var(--ocaso-medio-color);
         }
 
+#Contenedor {
+    grid-area: main;
+}
+
 #Pie {
+    grid-area: footer;
+    padding: 15px;
     background-color: var(--ocaso-oscuro-color);
+    color: var(--ocaso-claro-1-color)
 }
 
 /*---------------------------- GENERAL CONTROLLERS ----------------------------*/
@@ -175,6 +188,11 @@ body {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     width: 100%;
     max-width: 1500px;
+}
+
+#tabla-scroll {
+    overflow-x: auto;
+    width: 100%;
 }
 
 #lista-tabla {
