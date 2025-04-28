@@ -17,6 +17,8 @@ html {
   min-height: 100%;
 }
 
+/*---------------------------- COLORES ----------------------------*/
+
 :root {
     --ocaso-oscuro-color: #5B1C02;
     --ocaso-medio-color: #D25B01;
@@ -39,40 +41,61 @@ body {
     background-color: var(--ocaso-medio-color);
 }
 
-#Menu, #Menu .navbar-brand {
+#header {
     grid-area: header;
     background-color: var(--ocaso-oscuro-color);
     font-weight: 900;
-    color: var(--ocaso-claro-color);
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
 }
+    #header a {
+        text-decoration: none;
+        color: var(--ocaso-claro-color);
+    }
+    #header nav {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+    }
 
-#MenuBtns {
+
+.headerBtns {
     list-style: none;
-    padding: 0;
     display: flex;
     gap: 15px;
-    padding-left: 25px;
+    margin: 0;
+    padding: 10px;
+    align-items: center;
 }
-    #MenuBtns li {
-        display: inline-block;
-        padding: 0px 10px;
+    .headerBtns li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background-color: var(--ocaso-claro-color);
-        color: var(--oscuro-text-color) !important;
-        text-decoration: none;
+        padding: 8px 15px;
         border-radius: 6px;
         font-weight: bold;
-        transition: background-color 0.3s ease;
+        font-size: 15px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
     }
-        #MenuBtns li:hover {
+        .headerBtns li a {
+            text-decoration: none;
+            color: var(--ocaso-oscuro-color) !important;
+        }
+        .headerBtns li:hover {
             background-color: var(--ocaso-medio-color);
         }
 
 #Contenedor {
     grid-area: main;
+    color: var(--oscuro-text-color)
 }
 
-#Pie {
+#footer {
     grid-area: footer;
     padding: 15px;
     background-color: var(--ocaso-oscuro-color);
@@ -81,38 +104,36 @@ body {
 
 /*---------------------------- GENERAL CONTROLLERS ----------------------------*/
 
-#controllers {
+.controllers {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 80vh;
-    padding: 20px;
-    color: var(--ocaso-oscuro-color);
 }
 
-#controllers-contenedor {
+.controllers-contenedor {
     background-color: var(--ocaso-claro-color);
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
     width: 100%;
     max-width: 500px;
 }
 
-#controllers-titulo {
+.controllers-titulo {
     text-align: center;
     font-size: 28px;
     font-weight: bold;
     margin-bottom: 30px;
 }
 
-#controllers-btns {
+.controllers-btns {
     display: flex;
     gap: 15px;
     margin-top: 5px;
 }
-    #controllers-btns input[type="submit"],
-    #controllers-btns a {
+    .controllers-btns input[type="submit"],
+    .controllers-btns a {
         display: inline-block;
         padding: 8px 16px;
         font-size: 1rem;
@@ -122,38 +143,37 @@ body {
         border-radius: 6px;
         font-weight: bold;
         transition: background-color 0.3s ease;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         min-width: 90px;
         text-align: center;
         border: none;
     }
-        #controllers-btns input[type="submit"]:hover,
-        #controllers-btns a:hover {
+        .controllers-btns input[type="submit"]:hover,
+        .controllers-btns a:hover {
             background-color: var(--ocaso-claro-color);
         }
 
 /*---------------------------- DETAILS/DELETE ----------------------------*/
 
-#delete-btn {
+.delete-btn {
     background-color: #d11717 !important;
     color: var(--ocaso-claro-1-color) !important;
 }
-    #delete-btn:hover {
+    .delete-btn:hover {
         background-color: #d60000 !important;
     }
 
-#details-delete-contenido {
+.details-delete-contenido {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
 }
-    #details-delete-contenido dt {
+    .details-delete-contenido dt {
         font-weight: bold;
         white-space: nowrap
     }
-
-    #details-delete-contenido dd {
+    .details-delete-contenido dd {
         margin: 0;
         background-color: var(--ocaso-claro-1-color);
         border-radius: 8px;
@@ -161,19 +181,19 @@ body {
 
 /*---------------------------- CREATE/EDIT ----------------------------*/
 
-#create-edit-contenido {
+.create-edit-contenido {
     margin-bottom: 20px;
 }
-    #create-edit-contenido label {
+    .create-edit-contenido label {
         font-weight: bold;
         margin-bottom: 5px;
     }
-    #create-edit-contenido .form-control {
+    .create-edit-contenido .form-control {
         background-color: var(--ocaso-claro-1-color);
         color: var(--oscuro-text-color);
         border: none;
     }
-        #create-edit-contenido .form-control:focus {
+        .create-edit-contenido .form-control:focus {
             background-color: var(--ocaso-claro-1-color);
             border: 2px solid var(--ocaso-oscuro-color);
             box-shadow: 0 0 5px var(--ocaso-medio-color);
@@ -181,21 +201,21 @@ body {
 
 /*---------------------------- INDEX(LIST) ----------------------------*/
 
-#lista-contenedor {
+.lista-contenedor {
     background-color: var(--ocaso-claro-color);
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     width: 100%;
-    max-width: 1500px;
+    max-width: 1200px;
 }
 
-#tabla-scroll {
-    overflow-x: auto;
-    width: 100%;
+.lista-titulo {
+    font-size: 28px;
+    font-weight: bold;
 }
 
-#lista-tabla {
+.lista-tabla {
     width: 100%;
     border-collapse: collapse;
     background-color: var(--ocaso-claro-1-color);
@@ -203,17 +223,17 @@ body {
     border-radius: 10px;
     overflow: hidden;
     color: var(--oscuro-text-color);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     margin-top: 10px;
 }
-    #lista-tabla th, #lista-tabla td {
+    .lista-tabla th, .lista-tabla td {
         padding: 12px 15px;
         text-align: left;
     }
-    #lista-tabla thead {
+    .lista-tabla thead {
         background-color: var(--ocaso-medio-color);
     }
-    #lista-tabla th {
+    .lista-tabla th {
         font-weight: bold;
     }
 
